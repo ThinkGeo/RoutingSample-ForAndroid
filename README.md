@@ -1,4 +1,4 @@
-# RoutingSample-ForAndroid
+# RoutingSample For Android
 
 ### Description
 
@@ -13,6 +13,9 @@ Please refer to [Wiki](http://wiki.thinkgeo.com/wiki/map_suite_mobile_for_androi
 This sample makes use of the following NuGet Packages
 
 [MapSuite 10.0.0](https://www.nuget.org/packages?q=ThinkGeo)
+[ThinkGeo.MapSuite.Layers.ShapeFile](https://www.nuget.org/packages/ThinkGeo.MapSuite.Layers.ShapeFile/11.0.0-beta008)
+[MapSuiteMobileForAndroid-BareBone](https://www.nuget.org/packages/MapSuiteMobileForAndroid-BareBone/11.0.0-beta035)
+[ThinkGeo.MapSuite.Routing](https://www.nuget.org/packages/ThinkGeo.MapSuite.Routing/11.0.0-beta012)
 
 ### About the Code
 ```csharp
