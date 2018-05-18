@@ -50,7 +50,7 @@ namespace RoutingSample
             mapView.SingleTap += MapView_SingleTap;
 
             LayerOverlay backgroundOverlay = new LayerOverlay();
-            ShapeFileFeatureLayer shapeFileFeatureLayer = new ShapeFileFeatureLayer(DataManager.GetDataPath("land_lnd_street_segment_route.routable.shp"));
+            ShapeFileFeatureLayer shapeFileFeatureLayer = new ShapeFileFeatureLayer(DataManager.GetDataPath("DallasCounty-3857.shp"));
             shapeFileFeatureLayer.ZoomLevelSet.ZoomLevel01.DefaultLineStyle = WorldStreetsLineStyles.MotorwayFill(2.0f);
             shapeFileFeatureLayer.ZoomLevelSet.ZoomLevel01.ApplyUntilZoomLevel = ApplyUntilZoomLevel.Level20;
             backgroundOverlay.Layers.Add(shapeFileFeatureLayer);
@@ -61,15 +61,14 @@ namespace RoutingSample
             layerOverlay.Layers.Add(routingLayer);
             mapView.Overlays.Add(layerOverlay);
 
-            var routingSource = new RtgRoutingSource(DataManager.GetDataPath("land_lnd_street_segment_route.rtg"));
-            var featureSource = new ShapeFileFeatureSource(DataManager.GetDataPath("land_lnd_street_segment_route.routable.shp"));
-            featureSource.Open();
-            var boundry = featureSource.GetBoundingBox();
+            var routingSource = new RtgRoutingSource(DataManager.GetDataPath("DallasCounty-3857.rtg"));
+            var featureSource = new ShapeFileFeatureSource(DataManager.GetDataPath("DallasCounty-3857.shp"));
+
             routingEngine = new RoutingEngine(routingSource, featureSource);
             routingEngine.GeographyUnit = GeographyUnit.Meter;
-            routingEngine.SearchRadiusInMeters = 2000000;
+            routingEngine.SearchRadiusInMeters = 200;
 
-            mapView.CurrentExtent = new RectangleShape(307619.124092, 900219997.607509, 121246866.13256, 800097784.115004);
+            mapView.CurrentExtent = new RectangleShape(-10781100.2970769, 3875007.18710502, -10767407.8727504, 3854947.78546675);
         }
 
         private void MapView_SingleTap(object sender, SingleTapMapViewEventArgs e)

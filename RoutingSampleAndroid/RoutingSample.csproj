@@ -98,14 +98,23 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\RoutingSample.RoutingSample.mapsuitelicense" />
-    <AndroidAsset Include="Assets\AppData\land_lnd_street_segment_route.routable.dbf" />
-    <AndroidAsset Include="Assets\AppData\land_lnd_street_segment_route.routable.ids" />
-    <AndroidAsset Include="Assets\AppData\land_lnd_street_segment_route.routable.idx" />
-    <AndroidAsset Include="Assets\AppData\land_lnd_street_segment_route.routable.prj" />
-    <AndroidAsset Include="Assets\AppData\land_lnd_street_segment_route.routable.shp" />
-    <AndroidAsset Include="Assets\AppData\land_lnd_street_segment_route.routable.shx" />
-    <AndroidAsset Include="Assets\AppData\land_lnd_street_segment_route.rtg" />
-    <AndroidAsset Include="Assets\AppData\land_lnd_street_segment_route.rtx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.shx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-3857.dbf" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-3857.ids" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-3857.idx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-3857.prj" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-3857.rtg" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-3857.rtx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-3857.shp" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-3857.shx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.dbf" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.fastest.rtg" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.fastest.rtx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.ids" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.idx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.shortest.rtg" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.shortest.rtx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.shp" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
