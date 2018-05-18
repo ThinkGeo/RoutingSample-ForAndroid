@@ -2,8 +2,9 @@
 
 ### Description
 
+[Sample Data Download](http://wiki.thinkgeo.com/wiki/_media/routing/routing_howdoi_samples_data.zip)
 
-The Map Suite Routing “How Do I?” solution offers a series of useful how-to examples for using the Map Suite Routing extension. The bundled solution comes with a small set of routable street data from Newfoundland Island Realty, Canada and demonstrates simple routing, avoiding specific areas, getting turn-by-turn directions, optimizing for the Traveling Salesman Problem, and much more. Full source code is included in both C# and VB.NET languages; simply select your preferred language to download the associated solution.
+The Map Suite Routing “How Do I?” solution offers a series of useful how-to examples for using the Map Suite Routing extension. The bundled solution comes with a small set of routable street data from Dallas, TX and demonstrates simple routing, avoiding specific areas, getting turn-by-turn directions, optimizing for the Traveling Salesman Problem, and much more. Full source code is included in both C# and VB.NET languages; simply select your preferred language to download the associated solution.
 
 Please refer to [Wiki](http://wiki.thinkgeo.com/wiki/map_suite_mobile_for_android) for the details.
 
@@ -22,13 +23,15 @@ This sample makes use of the following NuGet Packages
 
 ### About the Code
 ```csharp
-var routingSource = new RtgRoutingSource(DataManager.GetDataPath("land_lnd_street_segment_route.rtg"));
-var featureSource = new ShapeFileFeatureSource(DataManager.GetDataPath("land_lnd_street_segment_route.routable.shp"));
-featureSource.Open();
-var boundry = featureSource.GetBoundingBox();
+var routingSource = new RtgRoutingSource(DataManager.GetDataPath("DallasCounty-3857.rtg"));
+var featureSource = new ShapeFileFeatureSource(DataManager.GetDataPath("DallasCounty-3857.shp"));
+
 routingEngine = new RoutingEngine(routingSource, featureSource);
 routingEngine.GeographyUnit = GeographyUnit.Meter;
-routingEngine.SearchRadiusInMeters = 2000000;
+routingEngine.SearchRadiusInMeters = 200;
+
+mapView.CurrentExtent = new RectangleShape(-10781100.2970769, 3875007.18710502, -10767407.8727504, 3854947.78546675);
+
 ```
 ### Getting Help
 
