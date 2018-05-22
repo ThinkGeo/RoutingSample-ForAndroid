@@ -91,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
+    <Compile Include="DirectionDataItem.cs" />
+    <Compile Include="DirectionItemAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,7 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\RoutingSample.RoutingSample.mapsuitelicense" />
-    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.shx" />
     <AndroidAsset Include="Assets\AppData\DallasCounty-3857.dbf" />
     <AndroidAsset Include="Assets\AppData\DallasCounty-3857.ids" />
     <AndroidAsset Include="Assets\AppData\DallasCounty-3857.idx" />
@@ -107,6 +108,7 @@
     <AndroidAsset Include="Assets\AppData\DallasCounty-3857.rtx" />
     <AndroidAsset Include="Assets\AppData\DallasCounty-3857.shp" />
     <AndroidAsset Include="Assets\AppData\DallasCounty-3857.shx" />
+    <AndroidAsset Include="Assets\AppData\DallasCounty-4326.shx" />
     <AndroidAsset Include="Assets\AppData\DallasCounty-4326.dbf" />
     <AndroidAsset Include="Assets\AppData\DallasCounty-4326.fastest.rtg" />
     <AndroidAsset Include="Assets\AppData\DallasCounty-4326.fastest.rtx" />
@@ -137,7 +139,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

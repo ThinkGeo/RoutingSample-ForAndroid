@@ -5,6 +5,8 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using ThinkGeo.MapSuite;
 using ThinkGeo.MapSuite.Android;
 using ThinkGeo.MapSuite.Layers;
@@ -25,10 +27,12 @@ namespace RoutingSample
 
         protected override void OnCreate(Bundle bundle)
         {
+            
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
             try
             {
+                
                 FrameLayout mapContainerView = FindViewById<FrameLayout>(Resource.Id.MapContainerView);
                 mapContainerView.RemoveAllViews();
                 mapView = new MapView(Application.Context);
@@ -49,12 +53,7 @@ namespace RoutingSample
             mapView.MapUnit = GeographyUnit.Meter;
             mapView.SingleTap += MapView_SingleTap;
 
-            LayerOverlay backgroundOverlay = new LayerOverlay();
-            ShapeFileFeatureLayer shapeFileFeatureLayer = new ShapeFileFeatureLayer(DataManager.GetDataPath("DallasCounty-3857.shp"));
-            shapeFileFeatureLayer.ZoomLevelSet.ZoomLevel01.DefaultLineStyle = WorldStreetsLineStyles.MotorwayFill(2.0f);
-            shapeFileFeatureLayer.ZoomLevelSet.ZoomLevel01.ApplyUntilZoomLevel = ApplyUntilZoomLevel.Level20;
-            backgroundOverlay.Layers.Add(shapeFileFeatureLayer);
-            mapView.Overlays.Add(backgroundOverlay);
+            mapView.Overlays.Add(new WorldStreetsAndImageryOverlay() { Projection = WorldStreetsAndImageryProjection.SphericalMercator});
 
             layerOverlay = new LayerOverlay();
             routingLayer = new RoutingLayer();
@@ -66,9 +65,10 @@ namespace RoutingSample
 
             routingEngine = new RoutingEngine(routingSource, featureSource);
             routingEngine.GeographyUnit = GeographyUnit.Meter;
-            routingEngine.SearchRadiusInMeters = 200;
+            routingEngine.SearchRadiusInMeters = 100;
 
             mapView.CurrentExtent = new RectangleShape(-10781100.2970769, 3875007.18710502, -10767407.8727504, 3854947.78546675);
+
         }
 
         private void MapView_SingleTap(object sender, SingleTapMapViewEventArgs e)
@@ -90,9 +90,31 @@ namespace RoutingSample
             {
                 RoutingResult routingResult = routingEngine.GetRoute(routingLayer.StartPoint, routingLayer.EndPoint);
                 routingLayer.Routes.Add(routingResult.Route);
+                ShowTurnByTurnDirections(routingResult.RouteSegments, routingResult.Features);
             }
 
             layerOverlay.Refresh();
+
+
+        }
+
+        private void ShowTurnByTurnDirections(Collection<RouteSegment> roads, Collection<Feature> features)
+        {
+            var directionListView = FindViewById<ListView>(Resource.Id.DirectionListView);
+
+            var directionData = new List<DirectionDataItem>();
+
+            for (int i = 0; i < roads.Count; i++)
+            {
+                var direction = new DirectionDataItem() {
+                    RoadName = features[i].ColumnValues["NAME"],
+                    Direction = roads[i].DrivingDirection.ToString(),
+                    Length = Math.Round(((LineBaseShape)features[i].GetShape()).GetLength(GeographyUnit.Meter, DistanceUnit.Meter), 2)
+                };
+                directionData.Add(direction);
+            }
+
+            directionListView.Adapter = new DirectionItemAdapter(this, directionData);
         }
     }
 }

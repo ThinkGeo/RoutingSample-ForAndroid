@@ -127,17 +127,29 @@ namespace RoutingSample
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int MapContainerView = 2131034113;
-			
-			// aapt resource value: 0x7f050000
-			public const int RoutingLayout = 2131034112;
+			// aapt resource value: 0x7f050005
+			public const int DirectionListView = 2131034117;
 			
 			// aapt resource value: 0x7f050003
-			public const int uploadDataTextView = 2131034115;
+			public const int DirectionView = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int LengthView = 2131034116;
+			
+			// aapt resource value: 0x7f050001
+			public const int ListViewHeader = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int MapContainerView = 2131034112;
 			
 			// aapt resource value: 0x7f050002
-			public const int uploadProgressBar = 2131034114;
+			public const int RoadNameView = 2131034114;
+			
+			// aapt resource value: 0x7f050007
+			public const int uploadDataTextView = 2131034119;
+			
+			// aapt resource value: 0x7f050006
+			public const int uploadProgressBar = 2131034118;
 			
 			static Id()
 			{
