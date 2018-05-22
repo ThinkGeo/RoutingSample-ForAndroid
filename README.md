@@ -28,7 +28,7 @@ var featureSource = new ShapeFileFeatureSource(DataManager.GetDataPath("DallasCo
 
 routingEngine = new RoutingEngine(routingSource, featureSource);
 routingEngine.GeographyUnit = GeographyUnit.Meter;
-routingEngine.SearchRadiusInMeters = 200;
+routingEngine.SearchRadiusInMeters = 100;
 
 mapView.CurrentExtent = new RectangleShape(-10781100.2970769, 3875007.18710502, -10767407.8727504, 3854947.78546675);
 
