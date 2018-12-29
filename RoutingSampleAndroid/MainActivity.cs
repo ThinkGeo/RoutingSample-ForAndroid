@@ -27,12 +27,12 @@ namespace RoutingSample
 
         protected override void OnCreate(Bundle bundle)
         {
-            
+
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
             try
             {
-                
+
                 FrameLayout mapContainerView = FindViewById<FrameLayout>(Resource.Id.MapContainerView);
                 mapContainerView.RemoveAllViews();
                 mapView = new MapView(Application.Context);
@@ -51,9 +51,11 @@ namespace RoutingSample
         private void InitalizeMap()
         {
             mapView.MapUnit = GeographyUnit.Meter;
+            mapView.ZoomLevelSet = ThinkGeoCloudMapsOverlay.GetZoomLevelSet();
             mapView.SingleTap += MapView_SingleTap;
 
-            mapView.Overlays.Add(new WorldStreetsAndImageryOverlay() { Projection = WorldStreetsAndImageryProjection.SphericalMercator});
+            ThinkGeoCloudMapsOverlay baseOverlay = new ThinkGeoCloudMapsOverlay();
+            mapView.Overlays.Add(baseOverlay);
 
             layerOverlay = new LayerOverlay();
             routingLayer = new RoutingLayer();
@@ -106,7 +108,8 @@ namespace RoutingSample
 
             for (int i = 0; i < roads.Count; i++)
             {
-                var direction = new DirectionDataItem() {
+                var direction = new DirectionDataItem()
+                {
                     RoadName = features[i].ColumnValues["NAME"],
                     Direction = roads[i].DrivingDirection.ToString(),
                     Length = Math.Round(((LineBaseShape)features[i].GetShape()).GetLength(GeographyUnit.Meter, DistanceUnit.Meter), 2)
