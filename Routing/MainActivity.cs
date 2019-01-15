@@ -32,7 +32,6 @@ namespace RoutingSample
             SetContentView(Resource.Layout.Main);
             try
             {
-
                 FrameLayout mapContainerView = FindViewById<FrameLayout>(Resource.Id.MapContainerView);
                 mapContainerView.RemoveAllViews();
                 mapView = new MapView(Application.Context);
@@ -70,7 +69,6 @@ namespace RoutingSample
             routingEngine.SearchRadiusInMeters = 100;
 
             mapView.CurrentExtent = new RectangleShape(-10781100.2970769, 3875007.18710502, -10767407.8727504, 3854947.78546675);
-
         }
 
         private void MapView_SingleTap(object sender, SingleTapMapViewEventArgs e)
@@ -96,8 +94,6 @@ namespace RoutingSample
             }
 
             layerOverlay.Refresh();
-
-
         }
 
         private void ShowTurnByTurnDirections(Collection<RouteSegment> roads, Collection<Feature> features)
