@@ -1,4 +1,10 @@
-﻿using Android.App;
+﻿/*===========================================
+    Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require
+    a Client ID and Secret. These were sent to you via email when you signed up
+    with ThinkGeo, or you can register now at https://cloud.thinkgeo.com.
+===========================================*/
+
+using Android.App;
 using Android.Graphics;
 using Android.OS;
 using Android.Util;
@@ -12,7 +18,6 @@ using ThinkGeo.MapSuite.Android;
 using ThinkGeo.MapSuite.Layers;
 using ThinkGeo.MapSuite.Routing;
 using ThinkGeo.MapSuite.Shapes;
-using ThinkGeo.MapSuite.Styles;
 
 namespace RoutingSample
 {
@@ -53,12 +58,8 @@ namespace RoutingSample
             mapView.ZoomLevelSet = new ThinkGeoCloudMapsZoomLevelSet();
             mapView.SingleTap += MapView_SingleTap;
 
-            /*===========================================
-               Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require
-               a Client ID and Secret. These were sent to you via email when you signed up
-               with ThinkGeo, or you can register now at https://cloud.thinkgeo.com.
-            ===========================================*/
-            ThinkGeoCloudRasterMapsOverlay baseOverlay = new ThinkGeoCloudRasterMapsOverlay();
+            // Please input your ThinkGeo Cloud Client ID / Client Secret to enable the background map. 
+            ThinkGeoCloudRasterMapsOverlay baseOverlay = new ThinkGeoCloudRasterMapsOverlay("ThinkGeo Cloud Client ID", "ThinkGeo Cloud Client Secret");
             mapView.Overlays.Add(baseOverlay);
 
             layerOverlay = new LayerOverlay();
